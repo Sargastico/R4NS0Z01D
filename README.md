@@ -12,4 +12,18 @@ How to use: 'ransozoide.py [-e/-d] [directory path] [key length]
 
 CODED BY> SARGASTICO
 
-SPECIAL THANKS TO> AdrielFreud
+SPECIAL THANKS TO> AdrielFreud 
+
+THE PLAN:
+
+>>DEVELOPE THE CRYPTER ✔
+
+>>APPLY A KEY GENERATOR ✔
+
+>>DEVELOPE THE DECRYPTER ✔
+
+>>ADD A WORM SPREADER FUNCTION 
+
+
+ 
+
