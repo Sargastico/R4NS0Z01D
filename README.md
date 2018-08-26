@@ -1,7 +1,7 @@
 # R4NS0Z01D
 Ransomware in python! [CRYPTER / DECRYPTER]
 
-!(image)[https://media.giphy.com/media/3oriNLx3dUqFgVi86I/giphy.gif]
+<img src="https://media.giphy.com/media/3oriNLx3dUqFgVi86I/giphy.gif"/>
 
 Legal Disclaimer: usage of Ransozoide without prior mutual consistency can be considered as an 
 illegal activity. it is the final user's responsibility to obey all applicable local, state and 
