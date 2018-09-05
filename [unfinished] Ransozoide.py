@@ -43,9 +43,31 @@ CODED BY: Sargastico
 MY GIT: https://github.com/Sargastico
 --------------------------------------------------------------------------------------------------
 '''
-print(menu+ '\n')
 
-#diretorio = str.encode('C:\\Users\\ferna\\Desktop\\test\\') 
+sheet = r'''
+FORMAT >> py Ransozoide.py [mode] [length of the encryption key] [path to file]
+
+Sheet:
+
+	-e : Used to select the encrypt mode
+
+	-d : Used to select the decrypt mode
+
+Usage:
+	
+	ENCRYPT >>
+	py Ransozoide.py -e 20000 C:\\Users\\test_usr\\Desktop\\test_folder 
+
+	DECRYPT >>
+	py Ransozoide.py -d 20000 C:\\Users\\test_usr\\Desktop\\test_folder
+
+'''
+print(menu)
+
+if sys.argv[1] == '-h':
+	print(sheet + '\n')
+	exit()
+
 diretorio = str.encode(sys.argv[3])
 
 if sys.argv[1] == '-e':
@@ -53,7 +75,7 @@ if sys.argv[1] == '-e':
 	key = key_generator(int(sys.argv[2]))
 
 	arq = open('Leia-me.txt', 'w') 
-	arq.write('OOOOPPSSSS! Seus arquivos foram criptografados! =D \n')
+	arq.write('OOOOPPSSSS! Your files has been encrypted! =D \n')
 	arq.close()
 
 	for files in os.listdir(diretorio):
@@ -69,7 +91,7 @@ if sys.argv[1] == '-e':
 			n.write(enc)
 			n.close()
 			os.remove(files)
-			print(os.path.basename(files)+" <<<<>>>> Criptografado! ")
+			print(os.path.basename(files)+" <<<<>>>> Encrypted! ")
 
 elif sys.argv[1] == '-d':
 
@@ -90,7 +112,7 @@ elif sys.argv[1] == '-d':
 			n.write(dec)
 			n.close()
 			os.remove(files)
-			print(os.path.basename(new_file)+" <<<<>>>> Descriptografado! ")
+			print(os.path.basename(new_file)+" <<<<>>>> Decrypted! ")
 
 else:
- 	print("Use valid arguments -e/-d [encrypt/decrypt]")
+ 	print("Use a valid argument: -e/-d [encrypt/decrypt]")
