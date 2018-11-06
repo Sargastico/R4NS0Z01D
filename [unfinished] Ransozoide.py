@@ -1,3 +1,4 @@
+#MESSAGE OF THE DAY: "Wannacry does not have the potential to be a megazord that the ransomzoid has!"
 
 import os
 import string
